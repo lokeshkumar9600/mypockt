@@ -11,6 +11,6 @@ app.get("/sign-up" , (req,res)=>{
 app.post("/sign-up" , (req,res)=>{
     
 })
-app.listen(port, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log("server is running");
 })
