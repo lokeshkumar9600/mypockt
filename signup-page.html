@@ -14,16 +14,16 @@
 <body>
     <div class="bg">
     <nav class="navbar navbar-dark navbar-custom navbar-right ">
-        <a href="/home"class="navbar-brand" style = "font-family: 'Ubuntu', sans-serif;">Brand-name</a>
+        <a href="/"class="navbar-brand" style = "font-family: 'Ubuntu', sans-serif;color:#555555">My-Pockt</a>
             </nav>
         <div class="container d-flex justify-content-center">
 <div class="row">
     <div class="col-6">
-        <form>
+        <form method="POST">
 <div class="mb-3 hv" style="background: #cdc9c3; height:27em;width:330px;border-radius: 25px; margin-top:5.4em">
     <div class="col-12 inline field" >
         <div class="ui input ml-2  mt-3 mb-3" >
-            <input type="text" placeholder="First-Name" style="border-radius: 25px;">
+            <input type="text" name="firstName" placeholder="First-Name" style="border-radius: 25px;">
           </div> 
           <div class="ui left pointing label ml-3">
             First-name
@@ -32,7 +32,7 @@
     <div class="col-12 inline field" >  
        
         <div class="ui input ml-2  mt-3 mb-3" >
-            <input type="text" placeholder="Last-Name" style="border-radius: 25px;">
+            <input type="text" name="lastName" placeholder="Last-Name" style="border-radius: 25px;">
           </div>
            <div class="ui left pointing label ml-3">
             Last-name
@@ -41,7 +41,7 @@
     </div> 
     <div class="col-12 inline field" >  
         <div class="ui fluid input ml-2  mt-3" >
-            <input type="email" placeholder="Email" style="border-radius: 25px;">
+            <input name="email" type="email" placeholder="Email" style="border-radius: 25px;">
           </div>
           <div class="ui pointing label ml-2">
             Email
@@ -50,14 +50,14 @@
     </div> 
     <div class="col-12 inline field" >  
         <div class="ui fluid input ml-2  mt-3" >
-            <input type="Password" placeholder="Password" style="border-radius: 25px;">
+            <input name="password" type="Password" placeholder="Password" style="border-radius: 25px;">
           </div>
           <div class="ui pointing label ml-2">
             Enter your password
           </div> 
     </div> 
     <div class="col-12">
-        <button class=" btn btn-dark btn-block mt-4" style="border-radius: 25px;">Sign up</button>
+        <button type="submit" class=" btn btn-dark btn-block mt-4" style="border-radius: 25px;">Sign up</button>
     </div>
 </div>
 </form>
