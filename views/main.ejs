@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
@@ -20,3 +21,75 @@
                 <p>{user name}</p> 
               </form>
                 </nav>
+                <div class="bthold d-flex justify-content-center" style="margin-top:30px;">
+                <button id="btx" class="btn btn-success btn-lg">+ Add item</button>
+<div id="add" class="modal fade" role="dialog">
+    <div class="modal-dialog   modal-lg" role="content">
+        <!-- modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                   Add a savings goal
+                </h4>
+                <button style="outline: none;" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <form method="POST">
+                   <div class="form-row">
+                       <div class="col-sm-2 ">
+                           <label for="goal">Goal  :</label>
+                       </div>
+                       <div class="col-sm-10 ">
+                           <input id="goal" name="goal" type="text" class="form-control">
+                       </div>
+                       <div class="col-sm-2 mt-3 ">
+                        <label for="note">Note  :</label>
+                    </div>
+                    <div class="col-sm-10 mt-3">
+                        <input id="note" name="note" type="text" class="form-control">
+                    </div>
+                       <div class="col-sm-2 mt-2 ">
+                           <label for="finalAmount">Final Amount :</label>
+                       </div>
+                       <div class="col-sm-3 mt-3">
+                           <input id="finalAmount" name="final" class="form-control" type="text">
+                       </div>
+                       <div class="col-sm-1"></div>
+                       <div class="col-sm-2 mt-2 ">
+                        <label for="initialAmount">Initial Investment :</label>
+                    </div>
+                    <div class="col-sm-3 mt-3">
+                        <input id="initialAmount" name="initial" class="form-control" type="text">
+                    </div>
+                       <div class="col-sm-2">
+                       </div>
+                       <div class="col-sm-10 mt-3" >
+                           <button style="width: 75px;" type="submit" class="btn btn-success">  Add  </button>
+                       </div>
+
+                       </div> 
+               </form>
+            </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+        <div>
+
+
+<script>
+    $(document).ready(function(){
+        $("#btx").click(function(){
+            $("#add").modal();
+        });
+    });
+
+</script>
+</body>
+</html>
