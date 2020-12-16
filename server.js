@@ -4,6 +4,7 @@ mongoose.connect("mongodb://localhost:27017/Mypockt" , {useNewUrlParser : true ,
 const bodyParser = require('body-parser');
 var ejs = require('ejs');
 const app = express();
+let emailx = "";
 app.set('view engine', 'ejs');
 const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,17 +37,27 @@ app.post("/sign-up" , (req,res)=>{
 
 // authentication of the account
 app.post("/", (req,res)=>{
-    let emailx = req.body.email;
+     emailx = req.body.emaildb;
     let pass = req.body.password;
-    main.findOne({email:emailx},function(err,save){
+    main.findOne({email:emailx},function(err,user){
         if(err){
             console.error(err);
         }else{
-            if(save){
-                if(save.password === pass){
+            if(user){
+                if(user.password === pass){
                     app.get("/main",(req,res)=>{
-                        res.render("main")
+                        main.findOne({email:emailx}, function(err,save){
+                            if(err){
+                                console.log(err);
+                            }else{
+                            console.log(save)
+                            res.render("main",{save:save})
+                            }
+                        })
+                        
                     })
+                }else{
+                         
                 }
                 res.redirect("/main")
             }
@@ -55,23 +66,44 @@ app.post("/", (req,res)=>{
 });
 
 app.post("/main",(req,res)=>{
-    let x =  {
-        "goal" : req.body.goal,
-        "note" : req.body.note,
-        "final": req.body.final,
-        "initial": req.body.initial
-    }
-    console.log(x)
-    res.redirect("/main")
+    let Acc = new account({
+        goal:req.body.goal,
+        Note:req.body.note,
+        finalAmount:req.body.final,
+        InitialAmount:req.body.initial
+
+    })
+    Acc.save()
+    const passwordx = req.body.password;
+       main.findOne({email:emailx},function(err,user){
+           if(err){
+               console.error(err);
+           }else{
+               if(user.password === passwordx){
+                   main.updateOne({password:passwordx},{"$push":{Account:Acc}},function(err,done){
+                       if(err){
+                           console.error(err)
+                       }else{
+                           console.log(done);
+                           res.redirect("/main")
+                       }
+                   });
+               }else{
+                   
+               }
+           }
+       })
+   
 
 })
 //database section
 var accountSchema =  new mongoose.Schema({
     
     goal: String,
+    Note:String,
     finalAmount:Number,
-    InitialAmount:Number,
-    Note:String
+    InitialAmount:Number
+    
     
 });
 
@@ -95,7 +127,8 @@ var account = mongoose.model("account",accountSchema)
 
 
 //end of database section
-
+console.log(emailx)
 app.listen(process.env.PORT || port, ()=>{
     console.log("server is running");
 });
+
