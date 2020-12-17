@@ -96,7 +96,10 @@ app.post("/main",(req,res)=>{
                    });
                }
                else{
-                   
+                   app.get("/error1",(req,res)=>{
+                       res.render("error1",{})
+                   })
+                   res.redirect("/error1")
                }
            }
        })
