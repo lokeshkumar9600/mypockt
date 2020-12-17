@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/Mypockt" , {useNewUrlParser : true , useUnifiedTopology:true});
-const bodyParser = require('body-parser');
+let  bodyParser = require('body-parser');
 var ejs = require('ejs');
 const app = express();
-let emailx = "";
+let emailx = ""
 app.set('view engine', 'ejs');
 const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,6 +16,9 @@ app.get("/", (req,res)=>{
 app.get("/sign-up" , (req,res)=>{
     res.sendFile(__dirname+"/"+"signup-page.html");
     
+});
+app.get("/error",(req,res)=>{
+    res.render("errors",{});
 });
 
 // generation of the account 
@@ -37,32 +40,35 @@ app.post("/sign-up" , (req,res)=>{
 
 // authentication of the account
 app.post("/", (req,res)=>{
-     emailx = req.body.emaildb;
+    emailx = req.body.emaildb;
     let pass = req.body.password;
+    console.log(emailx,pass)
     main.findOne({email:emailx},function(err,user){
+        console.log(user)
         if(err){
             console.error(err);
         }else{
-            if(user){
                 if(user.password === pass){
                     app.get("/main",(req,res)=>{
-                        main.findOne({email:emailx}, function(err,save){
+                        main.findOne({email:emailx},(err,save)=>{
                             if(err){
                                 console.log(err);
                             }else{
                             console.log(save)
                             res.render("main",{save:save})
                             }
-                        })
-                        
-                    })
+                        }); 
+                 
+                    });
+                    res.redirect("/main") 
                 }else{
-                         
-                }
-                res.redirect("/main")
-            }
-        }
-    })
+                  app.get("/error" , (req,res)=>{
+                      res.render("/error")
+                  });
+                  res.redirect("/error");
+                };       
+        };
+    });
 });
 
 app.post("/main",(req,res)=>{
@@ -88,7 +94,8 @@ app.post("/main",(req,res)=>{
                            res.redirect("/main")
                        }
                    });
-               }else{
+               }
+               else{
                    
                }
            }
@@ -127,7 +134,7 @@ var account = mongoose.model("account",accountSchema)
 
 
 //end of database section
-console.log(emailx)
+
 app.listen(process.env.PORT || port, ()=>{
     console.log("server is running");
 });
