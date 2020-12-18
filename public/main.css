@@ -11,3 +11,33 @@
     border-radius: 25px ;
 
 }
+.title{
+    position: relative;
+    left:1em;
+    top:0.5em;
+}
+.NOTE{
+    position:relative;
+    left:1.2em;
+    top:1em;
+}
+.final{
+    position: relative;
+    top:1.5em;
+    left:1.2em;
+    font-size:14px;
+    font-weight: bold;
+
+}
+.initial{
+    position: relative;
+    top:1.5em;
+
+    font-size:14px;
+    font-weight: bold;
+}
+.pos{
+    position: relative;
+    top:2.5em;
+    margin-top:20px;
+}

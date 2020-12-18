@@ -92,11 +92,32 @@
 <div class="row">
     <%save.Account.forEach(function(content){%>
         <div class=" col-12  d-flex justify-content-center">
-            <div class="main-div mb-4">
-                <p><%= content %></p>
+            <div class="main-div mb-4" >
+                <div class="row">
+                    <div class="col-6 title">
+                        <h3><%=content.goal%></h3>
+                    </div>
+                    <div class="col-6"></div>
+                    <div class="col-12">
+                        <p class="NOTE">Note : <%=content.Note%></p>
+                    </div>
+                    <div class="col-6">
+                        <p class="final">Final Amount: <%=content.finalAmount%></p>
+                    </div>
+                    <div class="col-6">
+                        <p class="initial">Initial Amount: <%=content.InitialAmount%></p>
+                    </div>
+                    <% var prog = (content.InitialAmount/content.finalAmount)*100 %> 
+                    <div class="col-12 ">
+                        <div class="container-fluid">
+                        <div class="progress pos">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<%=prog%>%"><%=prog%>%</div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-</div>
+        </div>
  <% }); %>
 </div>
 </div>
