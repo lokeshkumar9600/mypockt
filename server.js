@@ -21,6 +21,26 @@ app.get("/error",(req,res)=>{
     res.render("errors",{});
 });
 
+
+
+app.post("/inc",(req,res)=>{
+    console.log(req.body.inc);
+    console.log(req.body.bt)
+    main.findOne({email:emailx},(err,f)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log(f.Account);
+        }
+    });
+
+    });
+
+
+
+
+
+
 // generation of the account 
 app.post("/sign-up" , (req,res)=>{
     main.create({
