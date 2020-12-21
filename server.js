@@ -34,7 +34,7 @@ app.post("/inc",(req,res)=>{
           console.log(save)
           res.redirect("/main")
       }
-  })
+  });
  
     });
 
@@ -59,6 +59,23 @@ app.post("/sign-up" , (req,res)=>{
         }
     });
    });
+
+
+app.post("/dec",(req,res)=>{
+console.log(req.body.dec);
+console.log(req.body.d);
+main.updateOne({"email":emailx,"Account.goal":req.body.dec},{$inc:{"Account.$.InitialAmount":-req.body.d}},(err,save)=>{
+    if(err){
+        console.log(err)
+    }else{
+        console.log(save)
+        res.redirect("/main")
+    }
+});
+})
+
+
+
 
 // authentication of the account
 app.post("/", (req,res)=>{
