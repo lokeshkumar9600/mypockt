@@ -82,7 +82,7 @@
 
             </div>
 
-
+    </div>
         </div>
 
     </div>
@@ -115,7 +115,7 @@
 <div class="col-sm-3">
 </div>
 <div class="col-8 mt-3" >
-    <button style="width: 75px;" name="bt" value="<%=content._id%>" type="submit" class="btn btn-success">  Add  </button>
+    <button style="width: 75px;" name="bt" value="<%=content.goal%>" type="submit" class="btn btn-success">  Add  </button>
 </div>
 <div class="col-1"></div>
                   </div>
@@ -150,7 +150,7 @@
                         <p class="final">Final Amount: <%=content.finalAmount%></p>
                     </div>
                     <div class="col-6">
-                        <p class="initial">Initial Amount: <%=content.InitialAmount%></p>
+                        <p class="initial">Current Amount: <%=content.InitialAmount%></p>
                     </div>
                     <% var prog = Math.round((content.InitialAmount/content.finalAmount)*100) %> 
                     <div class="col-12 ">
@@ -165,9 +165,6 @@
         </div>
         <script>
             $(document).ready(function(){
-                $("#btx").click(function(){
-                    $("#add").modal();
-                });
                 $(".<%=content._id%>").click(function(){
                     $("#<%=content._id%>").modal();
                 });
@@ -178,7 +175,14 @@
 </div>
 </div>
 </div>
+<script>
+     $(document).ready(function(){
+                $("#btx").click(function(){
+                    $("#add").modal();
+                });
+            });
 
+</script>
 
 
 

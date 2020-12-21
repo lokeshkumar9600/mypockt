@@ -25,15 +25,17 @@ app.get("/error",(req,res)=>{
 
 app.post("/inc",(req,res)=>{
     console.log(req.body.inc);
-    console.log(req.body.bt)
-    main.findOne({email:emailx},(err,f)=>{
-        if(err){
-            console.log(err);
-        }else{
-            console.log(f.Account);
-        }
-    });
-
+    console.log(req.body.bt);
+    console.log(emailx)
+  main.updateOne({"email":emailx,"Account.goal":req.body.bt},{$inc:{"Account.$.InitialAmount":req.body.inc}},(err,save)=>{
+      if(err){
+          console.log(err)
+      }else{
+          console.log(save)
+          res.redirect("/main")
+      }
+  })
+ 
     });
 
 
