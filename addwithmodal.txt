@@ -1,0 +1,71 @@
+ <!-- start modal1 -->
+        <div   class="modal fade" id="<%=content._id%>" role="dialog">
+            <div class="modal-dialog   modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+               ADD TO SAVINGS
+                </h4>
+                <button style="outline: none;" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form  action="/inc" method="POST">
+                  <div class="form-row">
+<div class="col-sm-3">
+    <label for="inc">Enter Amount :</label>
+</div>
+<div class="col-9">
+    <input id="inc" name="inc"  type="text" class="form-control">
+</div>
+<div class="col-sm-3">
+</div>
+<div class="col-8 mt-3" >
+    <button style="width: 75px;" name="bt" value="<%=content.goal%>" type="submit" class="btn btn-success">  Add  </button>
+</div>
+<div class="col-1"></div>
+                  </div>
+                </form>
+            </div>
+        </div>
+            </div>
+        </div>
+        <!-- end -->
+
+
+
+
+         
+        <!-- withdraw start -->
+        <div   class="modal fade" id="<%=content.goal%>" role="dialog">
+            <div class="modal-dialog   modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+               Enter Amount to withdraw
+                </h4>
+                <button style="outline: none;" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form  action="/dec" method="POST">
+                  <div class="form-row">
+<div class="col-sm-3">
+    <label for="inc">Enter Amount :</label>
+</div>
+<div class="col-8">
+    <input id="dd" name="d"  type="text" class="form-control">
+</div>
+<div class="col-1"></div>
+<div class="col-sm-3">
+</div>
+<div class="col-8 mt-3" >
+    <button style="width: 75px;" name="dec" value="<%=content.goal%>" type="submit" class="btn btn-danger">Withdraw</button>
+</div>
+<div class="col-1"></div>
+                  </div>
+                </form>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <!-- withdraw end -->

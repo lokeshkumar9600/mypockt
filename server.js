@@ -21,7 +21,9 @@ app.get("/error",(req,res)=>{
     res.render("errors",{});
 });
 
-
+app.post("/del",(req,res)=>{
+console.log(req.body.del)
+})
 
 app.post("/inc",(req,res)=>{
     console.log(req.body.inc);
