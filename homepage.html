@@ -14,12 +14,14 @@
 </head>
 <body>
     <div class="bg">
+        
         <nav class="navbar navbar-dark navbar-custom navbar-right ">
             <a href="/" class="navbar-brand" style = "font-family: 'Ubuntu', sans-serif;color:#555555">My-Pockt</a>
             <form class="form-inline">
                 <a href="/sign-up" style="text-decoration: none;" ><button type="button" class="btn btn-sm btn-dark nav-link my-2 my-sm-0 ">Sign-up</button></a> 
               </form>
                 </nav>
+     
                 <div class="container d-flex justify-content-center">
                     <div class="row ">
                         <div class="col-6">
@@ -54,6 +56,25 @@
                     </div>
                 </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <script>
+        const options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+      function addDarkmodeWidget() {
+        new Darkmode(options).showWidget();
+      }
+      window.addEventListener('load', addDarkmodeWidget);
+    </script>
 </body>
 </html>
