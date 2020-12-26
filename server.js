@@ -22,29 +22,28 @@ app.get("/error",(req,res)=>{
 });
 
 app.post("/del",(req,res)=>{
-console.log(req.body.del)
+main.updateOne({"email":emailx},{ $pull: { 'Account': { goal: req.body.del } } },(err,done)=>{
+    if(err){
+        console.error(err)
+    }else{
+        res.redirect("/main");
+    }
+});
 })
 
 app.post("/inc",(req,res)=>{
     console.log(req.body.inc);
     console.log(req.body.bt);
-    console.log(emailx)
-  main.updateOne({"email":emailx,"Account.goal":req.body.bt},{$inc:{"Account.$.InitialAmount":req.body.inc}},(err,save)=>{
-      if(err){
-          console.log(err)
-      }else{
-          console.log(save)
-          res.redirect("/main")
-      }
-  });
- 
+    main.updateOne({"email":emailx,"Account.goal":req.body.bt},{$inc:{"Account.$.InitialAmount":req.body.inc}},(err,save)=>{
+        if(err){
+            console.log(err)
+        }else{
+            
+            res.redirect("/main")
+        }
     });
-
-
-
-
-
-
+    })
+    
 // generation of the account 
 app.post("/sign-up" , (req,res)=>{
     main.create({
@@ -56,7 +55,7 @@ app.post("/sign-up" , (req,res)=>{
         if(err){
             console.error(err)
         }else{
-            console.log(save)
+            
             res.redirect("/")
         }
     });
@@ -70,7 +69,7 @@ main.updateOne({"email":emailx,"Account.goal":req.body.dec},{$inc:{"Account.$.In
     if(err){
         console.log(err)
     }else{
-        console.log(save)
+        
         res.redirect("/main")
     }
 });
@@ -95,7 +94,7 @@ app.post("/", (req,res)=>{
                             if(err){
                                 console.log(err);
                             }else{
-                            console.log(save)
+                            
                             res.render("main",{save:save})
                             }
                         }); 
@@ -131,7 +130,7 @@ app.post("/main",(req,res)=>{
                        if(err){
                            console.error(err)
                        }else{
-                           console.log(done);
+                           
                            res.redirect("/main")
                        }
                    });
