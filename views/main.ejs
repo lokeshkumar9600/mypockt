@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-3">
                         <div>
-                                <button  style="border-radius: 25px;font-weight: bold;"  class="btn <%=content._id%> bt-pos test btn-success btn-sm">+Add</button>
+                                <button  style="border-radius: 25px;font-weight: bold;"  class="btn <%=content._id%>c bt-pos  btn-success btn-sm">+Add</button>
                         </div>
                     </div>
                     <div class="col-3">
@@ -110,7 +110,7 @@
                         <div>
                         <form action="/del" method="POST">
                             <button style="border-radius:25px;font-weight: bold;" type="submit" name="del" value="<%=content.goal%>" class="btn btn-danger btn-sm bt-pos2">Delete</button>
-                        <form>
+                        </form>
                         </div>
                     </div>
                     <div class="col-12">
@@ -135,7 +135,7 @@
         </div>
         
             <!-- start modal1 -->
-            <div   class="modal fade" id="<%=content._id%>" role="dialog">
+            <div   class="modal fade" id="<%=content._id%>c" role="dialog">
                <div class="modal-dialog   modal-lg" role="content">
            <div class="modal-content">
                <div class="modal-header">
@@ -145,22 +145,23 @@
                    <button style="outline: none;" type="button" class="close" data-dismiss="modal">&times;</button>
                </div>
                <div class="modal-body">
-                   <form  action="/inc" method="POST">
-                     <div class="form-row">
-   <div class="col-sm-3">
-       <label for="ince">Enter Amount :</label>
-   </div>
-   <div class="col-9">
-       <input id="ince" name="inc"  type="text" class="form-control">
-   </div>
-   <div class="col-sm-3">
-   </div>
-   <div class="col-8 mt-3" >
-       <button style="width: 75px;" name="bt" value="<%=content.goal%>" type="submit" class="btn btn-success">  Add  </button>
-   </div>
-   <div class="col-1"></div>
-                     </div>
-                   </form>
+                <form  action="/inc" method="POST">
+                    <div class="form-row">
+  <div class="col-sm-3">
+      <label for="dx">Enter Amount :</label>
+  </div>
+  <div class="col-8">
+      <input id="dx" name="ic"  type="text" class="form-control">
+  </div>
+  <div class="col-1"></div>
+  <div class="col-sm-3">
+  </div>
+  <div class="col-8 mt-3" >
+      <button style="width: 75px;" name="i" value="<%=content.goal%>" type="submit" class="btn btn-success">Add</button>
+  </div>
+  <div class="col-1"></div>
+                    </div>
+                  </form>
                </div>
            </div>
                </div>
@@ -181,7 +182,7 @@
                    <form  action="/dec" method="POST">
                      <div class="form-row">
    <div class="col-sm-3">
-       <label for="inc">Enter Amount :</label>
+       <label for="dd">Enter Amount :</label>
    </div>
    <div class="col-8">
        <input id="dd" name="d"  type="text" class="form-control">
@@ -203,8 +204,8 @@
            <!-- withdraw end -->
         
         <script>
-                $(".<%=content._id%>").click(function(){ 
-                    $("#<%=content._id%>").modal(); 
+                $(".<%=content._id%>c").click(function(){ 
+                    $("#<%=content._id%>c").modal(); 
                 }); 
                 $(".<%=content._id%>a").click(function(){ 
                     $("#<%=content._id%>a").modal(); 

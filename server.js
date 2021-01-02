@@ -31,18 +31,7 @@ main.updateOne({"email":emailx},{ $pull: { 'Account': { goal: req.body.del } } }
 });
 })
 
-app.post("/inc",(req,res)=>{
-    console.log(req.body.inc);
-    console.log(req.body.bt);
-    main.updateOne({"email":emailx,"Account.goal":req.body.bt},{$inc:{"Account.$.InitialAmount":req.body.inc}},(err,save)=>{
-        if(err){
-            console.log(err)
-        }else{
-            
-            res.redirect("/main")
-        }
-    });
-    })
+
     
 // generation of the account 
 app.post("/sign-up" , (req,res)=>{
@@ -60,6 +49,8 @@ app.post("/sign-up" , (req,res)=>{
         }
     });
    });
+
+
 
 
 app.post("/dec",(req,res)=>{
@@ -177,6 +168,19 @@ var account = mongoose.model("account",accountSchema)
 
 
 //end of database section
+app.post("/inc",(req,res)=>{
+    console.log("hello reached inc route")
+    console.log(req.body.i)
+    console.log(req.body.ic)
+    main.updateOne({"email":emailx,"Account.goal":req.body.i},{$inc:{"Account.$.InitialAmount":req.body.ic}},(err,save)=>{
+        if(err){
+            console.log(err)
+        }else{
+            
+            res.redirect("/main")
+        }
+    });
+    });
 
 app.listen(process.env.PORT || port, ()=>{
     console.log("server is running");
