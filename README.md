@@ -1,5 +1,5 @@
 # mypockt
-# A simple web-app built using Javascript and mongoDB to add and track your savings goals
+# A simple web-app built using Javascript , NodeJS and MongoDB to add and track your savings goals
 
 
 # AUTHENTICATION PAGE 
