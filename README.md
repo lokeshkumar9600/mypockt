@@ -17,4 +17,12 @@
 # AFTER ADDING SAVINGS GOAL 
 ![Screenshot (78)](https://user-images.githubusercontent.com/67655248/110282551-ae741600-8004-11eb-88d0-d4250ca76290.png)
 
+# TO ADD
+![Screenshot (79)](https://user-images.githubusercontent.com/67655248/110282659-e0857800-8004-11eb-8ff1-50fb572bf9bd.png)
+
+# TO WITHDRAW
+![Screenshot (80)](https://user-images.githubusercontent.com/67655248/110282703-f430de80-8004-11eb-96a2-ddbba0e2437d.png)
+
+# IF ENTERED WRONG PASSWORD
+![Screenshot (81)](https://user-images.githubusercontent.com/67655248/110282760-0c086280-8005-11eb-82f7-b9d6c73bcecf.png)
 
