@@ -1,3 +1,61 @@
 .bthold{
     width:100%;
 }
+.main-div{
+    height:150px;
+    width: 90%;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: rgb(21, 226, 192);
+    border-radius: 25px ;
+
+}
+.mainbg{
+    background-color: #fbf7f0;
+}
+.title{
+    position: relative;
+    left:1em;
+    top:0.5em;
+}
+.bt-pos{
+    position: relative;
+    left:6.3em;
+    top:0.7em;
+}
+.bt-pos1{
+    position: relative;
+    top:0.7em;
+    left:1.6em;
+}
+.bt-pos2{
+    position: relative;
+    top:0.7em;
+    right:1.2em;
+}
+.NOTE{
+    position:relative;
+    left:1.2em;
+    top:1em;
+}
+.final{
+    position: relative;
+    top:1.5em;
+    left:1.2em;
+    font-size:14px;
+    font-weight: bold;
+
+}
+.initial{
+    position: relative;
+    top:1.5em;
+
+    font-size:14px;
+    font-weight: bold;
+}
+.pos{
+    position: relative;
+    top:2.5em;
+    margin-top:20px;
+}

@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/Mypockt" , {useNewUrlParser : true , useUnifiedTopology:true});
-const bodyParser = require('body-parser');
+let  bodyParser = require('body-parser');
 var ejs = require('ejs');
 const app = express();
+let emailx = ""
 app.set('view engine', 'ejs');
 const port = 3000;
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,7 +17,22 @@ app.get("/sign-up" , (req,res)=>{
     res.sendFile(__dirname+"/"+"signup-page.html");
     
 });
+app.get("/error",(req,res)=>{
+    res.render("errors",{});
+});
 
+app.post("/del",(req,res)=>{
+main.updateOne({"email":emailx},{ $pull: { 'Account': { goal: req.body.del } } },(err,done)=>{
+    if(err){
+        console.error(err)
+    }else{
+        res.redirect("/main");
+    }
+});
+})
+
+
+    
 // generation of the account 
 app.post("/sign-up" , (req,res)=>{
     main.create({
@@ -28,50 +44,107 @@ app.post("/sign-up" , (req,res)=>{
         if(err){
             console.error(err)
         }else{
-            console.log(save)
+            
             res.redirect("/")
         }
     });
    });
 
+
+
+
+app.post("/dec",(req,res)=>{
+console.log(req.body.dec);
+console.log(req.body.d);
+main.updateOne({"email":emailx,"Account.goal":req.body.dec},{$inc:{"Account.$.InitialAmount":-req.body.d}},(err,save)=>{
+    if(err){
+        console.log(err)
+    }else{
+        
+        res.redirect("/main")
+    }
+});
+})
+
+
+
+
 // authentication of the account
 app.post("/", (req,res)=>{
-    let emailx = req.body.email;
+    emailx = req.body.emaildb;
     let pass = req.body.password;
-    main.findOne({email:emailx},function(err,save){
+    console.log(emailx,pass)
+    main.findOne({email:emailx},function(err,user){
+        console.log(user)
         if(err){
             console.error(err);
         }else{
-            if(save){
-                if(save.password === pass){
+                if(user.password === pass){
                     app.get("/main",(req,res)=>{
-                        res.render("main")
-                    })
-                }
-                res.redirect("/main")
-            }
-        }
-    })
+                        main.findOne({email:emailx},(err,save)=>{
+                            if(err){
+                                console.log(err);
+                            }else{
+                            
+                            res.render("main",{save:save})
+                            }
+                        }); 
+                 
+                    });
+                    res.redirect("/main") 
+                }else{
+                  app.get("/error" , (req,res)=>{
+                      res.render("/error")
+                  });
+                  res.redirect("/error");
+                };       
+        };
+    });
 });
 
 app.post("/main",(req,res)=>{
-    let x =  {
-        "goal" : req.body.goal,
-        "note" : req.body.note,
-        "final": req.body.final,
-        "initial": req.body.initial
-    }
-    console.log(x)
-    res.redirect("/main")
+    let Acc = new account({
+        goal:req.body.goal,
+        Note:req.body.note,
+        finalAmount:req.body.final,
+        InitialAmount:req.body.initial
+
+    })
+    Acc.save()
+    const passwordx = req.body.password;
+       main.findOne({email:emailx},function(err,user){
+           if(err){
+               console.error(err);
+           }else{
+               if(user.password === passwordx){
+                   main.updateOne({password:passwordx},{"$push":{Account:Acc}},function(err,done){
+                       if(err){
+                           console.error(err)
+                       }else{
+                           
+                           res.redirect("/main")
+                       }
+                   });
+               }
+               else{
+                   app.get("/error1",(req,res)=>{
+                       res.render("error1",{})
+                   })
+                   res.redirect("/error1")
+               }
+           }
+       })
+   
 
 })
 //database section
 var accountSchema =  new mongoose.Schema({
     
     goal: String,
+    Note:String,
     finalAmount:Number,
-    InitialAmount:Number,
-    Note:String
+    InitialAmount:Number
+    
     
 });
 
@@ -95,7 +168,21 @@ var account = mongoose.model("account",accountSchema)
 
 
 //end of database section
+app.post("/inc",(req,res)=>{
+    console.log("hello reached inc route")
+    console.log(req.body.i)
+    console.log(req.body.ic)
+    main.updateOne({"email":emailx,"Account.goal":req.body.i},{$inc:{"Account.$.InitialAmount":req.body.ic}},(err,save)=>{
+        if(err){
+            console.log(err)
+        }else{
+            
+            res.redirect("/main")
+        }
+    });
+    });
 
 app.listen(process.env.PORT || port, ()=>{
     console.log("server is running");
 });
+
